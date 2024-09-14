@@ -1,0 +1,104 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #a8e6ff, #f2e9ff);
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Full viewport height */
+    width: 100vw;   /* Full viewport width */
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(54, 50, 50);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: rgb(54, 50, 50);
+    margin-bottom: 30px;
+}
+
+/* Grid Layout for Buttons */
+.button-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* Two columns */
+    grid-template-rows: 1fr 1fr;     /* Two rows */
+    grid-gap: 20px;
+    width: 80%;  /* Adjust this for button width relative to the screen */
+    height: 50%; /* Adjust this for button height relative to the screen */
+}
+
+/* Button Styles */
+.grid-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #6b2b71;
+    text-decoration: none;
+    background-color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Colors */
+.grid-button.chat {
+    background-color: #fdd1a2;
+}
+
+.grid-button.translate {
+    background-color: #bce7f0;
+}
+
+.grid-button.faq {
+    background-color: #e3ccff;
+}
+
+.grid-button.about {
+    background-color: #ffcce7;
+}
+
+/* Hover and Click Effects */
+.grid-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.grid-button:active {
+    transform: scale(0.95);
+}
+
+/* Dots for Navigation */
+.dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0 5px;
+}

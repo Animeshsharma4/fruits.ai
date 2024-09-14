@@ -1,0 +1,169 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    width: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styles */
+h2 {
+    text-align: center;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Input Field Styles */
+.input-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type="email"]::placeholder, input[type="password"]::placeholder {
+    color: #bbb;
+}
+
+.icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
+    border-color: #66afe9;
+}
+
+/* Checkbox Styles */
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox input {
+    margin-right: 10px;
+}
+
+/* Link Styles */
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Button Styles */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Social Login Buttons */
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.social-login a {
+    width: 48%;
+    padding: 10px;
+    background-color: #3b5998; /* Facebook color */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.social-login a.instagram {
+    background-color: #dd2a7b; /* Instagram color */
+}
+
+.social-login a.pinterest {
+    background-color: #bd081c; /* Pinterest color */
+}
+
+.social-login a.linkedin {
+    background-color: #0077b5; /* LinkedIn color */
+}
+
+.social-login a:hover {
+    opacity: 0.8;
+}
+
+/* Terms and Privacy Styles */
+.terms {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 10px;
+}
+
+.terms a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+/* Anonymous Login Button */
+.anonymous-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.anonymous-login button {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    font-size: 14px;
+}
+
+.anonymous-login button:hover {
+    background-color: #e6b800;
+}
