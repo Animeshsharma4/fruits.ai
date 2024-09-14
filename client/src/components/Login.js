@@ -123,7 +123,7 @@ const Login = () => {
 
       <button onClick={handleLogin}>Login</button>
 
-      <p className="social-login">or connect with</p>
+      {/* <p className="social-login">or connect with</p>
 
       <div className="social-login">
         <a href="/login-facebook" className="facebook">
@@ -138,15 +138,16 @@ const Login = () => {
         <a href="/login-linkedin" className="linkedin">
           LinkedIn
         </a>
-      </div>
+      </div> */}
 
-      <div className="anonymous-login">
-        <button onClick={() => navigate('/home')}>Anonymous</button>
-      </div>
+      
 
       {/* Add the sign-up option here */}
       <div className="signup-option">
         <p>Don't have an account? <a href='/Signup'>Sign up here</a></p>
+      </div>
+      <div className="anonymous-login">
+        <button onClick={() => navigate('/home')}>Anonymous</button>
       </div>
     </div>
   );
