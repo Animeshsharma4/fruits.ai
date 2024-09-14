@@ -2,51 +2,95 @@ const express = require('express');
 const router = express.Router();
 const Faq = require('../models/Faq');
 
-// Get all FAQs
+// @route   GET /api/faqs
+// @desc    Get all FAQs
+// @access  Public
 router.get('/', async (req, res) => {
-  const faqs = await Faq.find();
-  res.json(faqs);
-});
+  try {
+    const faqs = await Faq.find();
+    console.log(faqs);
+    res.json(faqs);
 
-// Get FAQ by ID
-router.get('/:id', async (req, res) => {
-  const faq = await Faq.findById(req.params.id);
-  if (!faq) {
-    return res.status(404).json({ message: 'FAQ not found' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-  res.json(faq);
 });
 
-// Create FAQ
+// @route   POST /api/faqs
+// @desc    Add a new FAQ
+// @access  Public (You can change this to protected if needed)
 router.post('/', async (req, res) => {
-  const faq = new Faq({
-    question: req.body.question,
-    answer: req.body.answer
+  const { question, answer } = req.body;
+
+  if (!question || !answer) {
+    return res.status(400).json({ message: 'Question and Answer are required' });
+  }
+
+  const newFaq = new Faq({
+    question,
+    answer,
   });
-  await faq.save();
-  res.status(201).json(faq);
+
+  try {
+    const savedFaq = await newFaq.save();
+    res.status(201).json(savedFaq);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
-// Update FAQ
+// @route   GET /api/faqs/:id
+// @desc    Get a specific FAQ by ID
+// @access  Public
+router.get('/:id', async (req, res) => {
+  try {
+    const faq = await Faq.findById(req.params.id);
+    if (!faq) {
+      return res.status(404).json({ message: 'FAQ not found' });
+    }
+    res.json(faq);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// @route   PUT /api/faqs/:id
+// @desc    Update an FAQ by ID
+// @access  Public (You can change this to protected if needed)
 router.put('/:id', async (req, res) => {
-  const faq = await Faq.findById(req.params.id);
-  if (!faq) {
-    return res.status(404).json({ message: 'FAQ not found' });
+  const { question, answer } = req.body;
+
+  try {
+    const faq = await Faq.findById(req.params.id);
+    if (!faq) {
+      return res.status(404).json({ message: 'FAQ not found' });
+    }
+
+    faq.question = question || faq.question;
+    faq.answer = answer || faq.answer;
+
+    const updatedFaq = await faq.save();
+    res.json(updatedFaq);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-  faq.question = req.body.question || faq.question;
-  faq.answer = req.body.answer || faq.answer;
-  await faq.save();
-  res.json(faq);
 });
 
-// Delete FAQ
+// @route   DELETE /api/faqs/:id
+// @desc    Delete an FAQ by ID
+// @access  Public (You can change this to protected if needed)
 router.delete('/:id', async (req, res) => {
-  const faq = await Faq.findById(req.params.id);
-  if (!faq) {
-    return res.status(404).json({ message: 'FAQ not found' });
+  try {
+    const faq = await Faq.findById(req.params.id);
+    if (!faq) {
+      return res.status(404).json({ message: 'FAQ not found' });
+    }
+
+    await faq.remove();
+    res.json({ message: 'FAQ deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-  await faq.remove();
-  res.json({ message: 'FAQ deleted' });
 });
 
 module.exports = router;

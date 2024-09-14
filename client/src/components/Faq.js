@@ -41,14 +41,16 @@ const FAQ = () => {
     useEffect(() => {
         const fetchFAQs = async () => {
             try {
-                const response = await fetch('/faqs.json'); // Ensure this path is correct
+                const response = await fetch('http://localhost:5000/api/faqs');
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error('Failed to fetch FAQs');
                 }
+                
                 const data = await response.json();
-                setFaqs(data.faqs);
-            } catch (error) {
-                setError(error.message);
+                console.log(data);
+                setFaqs(data); // Ensure the response shape is an array
+            } catch (err) {
+                setError(err.message);
             } finally {
                 setLoading(false);
             }
@@ -65,33 +67,77 @@ const FAQ = () => {
         );
     };
 
-    const handleAdd = () => {
-        if (newQuestion && newAnswer) {
-            setFaqs([...faqs, { question: newQuestion, answer: newAnswer }]);
+    const handleAdd = async () => {
+        if (!newQuestion || !newAnswer) {
+            alert('Please fill both question and answer');
+            return;
+        }
+        const newFaq = { question: newQuestion, answer: newAnswer };
+
+        try {
+            const response = await fetch('http://localhost:5000/api/faqs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newFaq),
+            });
+            const addedFaq = await response.json();
+            setFaqs([...faqs, addedFaq]);
             setNewQuestion('');
             setNewAnswer('');
+        } catch (err) {
+            setError(err.message);
         }
     };
 
-    const handleDelete = (index) => {
-        setFaqs(faqs.filter((_, i) => i !== index));
+    const handleDelete = async (index) => {
+        const faqToDelete = faqs[index];
+
+        try {
+            await fetch(`http://localhost:5000/api/faqs/${faqToDelete._id}`, {
+                method: 'DELETE',
+            });
+            setFaqs(faqs.filter((_, i) => i !== index));
+        } catch (err) {
+            setError(err.message);
+        }
     };
 
     const handleEdit = (index) => {
+        const faqToEdit = faqs[index];
         setEditIndex(index);
-        setEditQuestion(faqs[index].question);
-        setEditAnswer(faqs[index].answer);
+        setEditQuestion(faqToEdit.question);
+        setEditAnswer(faqToEdit.answer);
     };
 
-    const handleUpdate = () => {
-        if (editQuestion && editAnswer !== undefined) {
+    const handleUpdate = async () => {
+        if (!editQuestion || !editAnswer) {
+            alert('Please fill both question and answer');
+            return;
+        }
+
+        const updatedFaq = { question: editQuestion, answer: editAnswer };
+
+        try {
+            const response = await fetch(`http://localhost:5000/api/faqs/${faqs[editIndex]._id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedFaq),
+            });
+            const updatedData = await response.json();
+
             const updatedFaqs = faqs.map((faq, i) =>
-                i === editIndex ? { question: editQuestion, answer: editAnswer } : faq
+                i === editIndex ? updatedData : faq
             );
             setFaqs(updatedFaqs);
             setEditIndex(null);
             setEditQuestion('');
             setEditAnswer('');
+        } catch (err) {
+            setError(err.message);
         }
     };
 
@@ -112,33 +158,35 @@ const FAQ = () => {
                 </div>
             ))}
 
-            <h3>Add New FAQ</h3>
-            <input
-                type="text"
-                placeholder="Question"
-                value={newQuestion}
-                onChange={(e) => setNewQuestion(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="Answer"
-                value={newAnswer}
-                onChange={(e) => setNewAnswer(e.target.value)}
-            />
-            <button onClick={handleAdd}>Add FAQ</button>
+            <div className="add-faq">
+                <h3>Add New FAQ</h3>
+                <input
+                    type="text"
+                    placeholder="Question"
+                    value={newQuestion}
+                    onChange={(e) => setNewQuestion(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Answer"
+                    value={newAnswer}
+                    onChange={(e) => setNewAnswer(e.target.value)}
+                />
+                <button onClick={handleAdd}>Add FAQ</button>
+            </div>
 
             {editIndex !== null && (
-                <div>
+                <div className="edit-faq">
                     <h3>Edit FAQ</h3>
                     <input
                         type="text"
-                        placeholder="Question"
+                        placeholder="Edit Question"
                         value={editQuestion}
                         onChange={(e) => setEditQuestion(e.target.value)}
                     />
                     <input
                         type="text"
-                        placeholder="Answer"
+                        placeholder="Edit Answer"
                         value={editAnswer}
                         onChange={(e) => setEditAnswer(e.target.value)}
                     />
