@@ -6,6 +6,7 @@ import Chatbot from './components/Chatbot';
 import Translator from './components/Translator';
 import Faq from './components/Faq';
 import About from './components/About';
+import Signup from './components/Signup';
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ const App = () => {
         <Route path="/translator" element={<Translator />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/about" element={<About />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login/>} />
       </Routes>
     </Router>
   );

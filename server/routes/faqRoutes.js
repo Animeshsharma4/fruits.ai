@@ -8,7 +8,7 @@ const Faq = require('../models/Faq');
 router.get('/', async (req, res) => {
   try {
     const faqs = await Faq.find();
-    console.log(faqs);
+    // console.log(faqs);
     res.json(faqs);
 
   } catch (err) {
@@ -81,13 +81,20 @@ router.put('/:id', async (req, res) => {
 // @access  Public (You can change this to protected if needed)
 router.delete('/:id', async (req, res) => {
   try {
-    const faq = await Faq.findById(req.params.id);
-    if (!faq) {
+    const faq1 = await Faq.findById(req.params.id);
+    // console.log(faq);
+    if (!faq1) {
       return res.status(404).json({ message: 'FAQ not found' });
     }
 
-    await faq.remove();
-    res.json({ message: 'FAQ deleted' });
+     await Faq.deleteOne({ _id: faq1 });;
+   
+      const faqs = await Faq.find();
+      console.log(faqs);
+      res.json(faqs);
+  
+    
+    // res.json({ message: 'FAQ deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

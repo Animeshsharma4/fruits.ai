@@ -5,7 +5,7 @@ const Translate = () => {
   const [text, setText] = useState('');
   const [translatedText, setTranslatedText] = useState('');
   const [language, setLanguage] = useState('es'); // Default language is Spanish
-
+  
   // Example translation function
 //   const handleTranslate = async () => {
 //     try {
@@ -35,7 +35,7 @@ const handleTranslate = async () => {
     const url = 'https://text-translator2.p.rapidapi.com/translate';
 const data = new FormData();
 data.append('source_language', 'en');
-data.append('target_language', 'id');
+data.append('target_language', language);
 data.append('text', text);
 
 const options = {

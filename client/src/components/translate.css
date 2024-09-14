@@ -1,4 +1,4 @@
-.translate-container {
+/* .translate-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -62,4 +62,99 @@ select {
 .translated-output p {
     font-size: 18px;
     color: #333;
-}
+} */
+
+/* translate.css */
+
+/* Container for the translation component */
+.translate-container {
+    width: 800px;
+    max-height: 800px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* background-color: #f9f9f9; */
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Heading styling */
+  .translate-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Textarea styling */
+  .text-input {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  /* Language selector styling */
+  .language-selector {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .language-selector label {
+    margin-right: 10px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .language-selector select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  /* Button styling */
+  .translate-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .translate-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Translated text output styling */
+  .translated-output {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+  
+  .translated-output h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .translated-output p {
+    font-size: 1rem;
+    color: #444;
+  }
+  
