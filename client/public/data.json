@@ -1,0 +1,44 @@
+{
+    "questions": [
+        {
+            "question": "What is your name?",
+            "answer": "I am a chatbot created to assist you."
+        },
+        {
+            "question": "What is your purpose?",
+            "answer": "I am here to answer your questions and provide information."
+        },
+        {
+            "question": "How can I contact support?",
+            "answer": "You can contact support via email at support@example.com."
+        },
+        {
+            "question": "What are your hours of operation?",
+            "answer": "I am available 24/7 to assist you."
+        },
+        {
+            "question": "Where can I find the user manual?",
+            "answer": "The user manual can be found on our website under the 'Support' section."
+        },
+        {
+            "question": "Can you help me with my order?",
+            "answer": "Yes, please provide your order number for assistance."
+        },
+        {
+            "question": "What payment methods do you accept?",
+            "answer": "We accept credit cards, PayPal, and bank transfers."
+        },
+        {
+            "question": "Do you offer refunds?",
+            "answer": "Yes, we have a 30-day return policy for all purchases."
+        },
+        {
+            "question": "How long does shipping take?",
+            "answer": "Shipping typically takes 5-7 business days."
+        },
+        {
+            "question": "What is your privacy policy?",
+            "answer": "You can view our privacy policy on our website in the 'Privacy' section."
+        }
+    ]
+}
