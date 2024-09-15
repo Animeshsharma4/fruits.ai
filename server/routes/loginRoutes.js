@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
       }
   
       // Compare password
-      // const isMatch = password;
-      if (!(user.password==password)) {
+      const isMatch = password;
+      if (!isMatch) {
         return res.status(200).json({ success: false, message: 'Invalid password' });
       }
   
