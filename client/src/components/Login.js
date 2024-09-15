@@ -189,7 +189,7 @@ const Login = () => {
       <h2 id="title">Login</h2>
       <p>
         By signing in you are agreeing to our{' '}
-        <a href="/terms">Terms and Privacy Policy</a>
+        <a href="/Signup">Terms and Privacy Policy</a>
       </p>
 
       <div className="input-group" id="emailv">
