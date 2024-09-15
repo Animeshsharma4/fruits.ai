@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
   
     try {
       // Find user in the database
-      const user = await User.findOne({ email: userId });
+      const user = await User.findOne({ email: userId , password: password});
       if (!user) {
         return res.status(400).json({ success: false, message: 'User not found' });
       }
