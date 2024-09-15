@@ -7,7 +7,7 @@ const User = require('../models/login.js');
 
 
 
-router.post('/', async (req, res) => {
+router.get('/', async (req, res) => {
     const { userId, password } = req.body;
   
     try {

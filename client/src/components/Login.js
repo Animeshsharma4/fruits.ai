@@ -169,7 +169,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       
-      const response = await axios.post('https://fruits-ai-backend.vercel.app/api/login', {
+      const response = await axios.get('https://fruits-ai-backend.vercel.app/api/login', {
         userId,
         password,
       });
