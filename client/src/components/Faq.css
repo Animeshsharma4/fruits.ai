@@ -29,6 +29,8 @@
 }
 
 .faq-answer {
+    margin-left: 15px;
+    margin-right: 15px;
     margin-top: 5px;
     padding: 12px; /* Slightly larger padding */
     background-color: #e0e0e0;
@@ -83,4 +85,13 @@ q.css */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
 } */
-
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.home img{ 
+    border: 50%;
+    width: 30px;
+    height: 30px;
+}

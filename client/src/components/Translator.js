@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './translate.css'; // Import your CSS file
-
+import { Link } from 'react-router-dom';
 const Translate = () => {
   const [text, setText] = useState('');
   const [translatedText, setTranslatedText] = useState('');
@@ -101,6 +101,8 @@ try {
           <p>{translatedText}</p>
         </div>
       )}
+      <Link to="/home" className="home"><img src="https://th.bing.com/th/id/OIP.ZjWGBPoRd-zD8247yg5nAgHaHa?rs=1&pid=ImgDetMain" alt ="go to home page"></img></Link>
+
     </div>
   );
 };

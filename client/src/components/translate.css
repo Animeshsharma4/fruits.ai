@@ -157,4 +157,9 @@ select {
     font-size: 1rem;
     color: #444;
   }
-  
+  .home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}

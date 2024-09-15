@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signup.css'; // Importing the CSS file
+import axios from 'axios';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -10,7 +11,7 @@ const Signup = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSignup = () => {
+  const handleSignup = async() => {
     // Basic validation
     if (name.trim() === '' || email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
       setError('All fields are required');
@@ -24,11 +25,26 @@ const Signup = () => {
 
     // Clear error message
     setError('');
+    try {
+      const response = await axios.post('http://localhost:5000/api/login/register', {
+        email,
+        password,
+      });
 
+      if (response.data.success) {
+        alert('Signup successful! Please log in.');
+        navigate('/login'); // Redirect to login after successful signup
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
+      alert('An error occurred. Please try again.');
+    }
     // Perform signup logic (e.g., send signup data to the backend)
     // Assuming signup is successful, navigate to login or home page
-    console.log('Signup successful');
-    navigate('/home');
+    // console.log('Signup successful');
+    // navigate('/home');
   };
 
   return (

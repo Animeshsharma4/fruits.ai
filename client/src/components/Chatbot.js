@@ -138,6 +138,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './Chatbot.css';
+import { Link } from 'react-router-dom';
 
 const Chat = () => {
     const [messages, setMessages] = useState([]);
@@ -214,6 +215,8 @@ const Chat = () => {
                 />
                 <button onClick={handleSend} className="chat-button">Send</button>
             </div>
+            <Link to="/home" className="home"><img src="https://th.bing.com/th/id/OIP.ZjWGBPoRd-zD8247yg5nAgHaHa?rs=1&pid=ImgDetMain" alt ="go to home page"></img></Link>
+
         </div>
     );
 };

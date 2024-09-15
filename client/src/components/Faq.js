@@ -158,7 +158,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Import Axios
 import './Faq.css'; // Optional: Include CSS for styling
-
+import { Link } from 'react-router-dom';
 const FAQ = () => {
     const [faqs, setFaqs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -309,7 +309,11 @@ const FAQ = () => {
                     <button onClick={handleUpdate} className='add2'>Update FAQ</button>
                 </div>
             )}
+
+            <Link to="/home" className="home"><img src="https://th.bing.com/th/id/OIP.ZjWGBPoRd-zD8247yg5nAgHaHa?rs=1&pid=ImgDetMain" alt ="go to home page"></img></Link>
         </div>
+        
+
     );
 };
 

@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const faqRoutes = require('./routes/faqRoutes');
+const loginRoutes=require('./routes/loginRoutes')
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,8 @@ mongoose.connect('mongodb://localhost/fruitai', {
 }).then(() => console.log('MongoDB connected'))
   .catch((err) => console.error(err));
 
+
+  app.use('/api/login', loginRoutes);
 app.use('/api/faqs', faqRoutes);
 
 const PORT = process.env.PORT || 5000;

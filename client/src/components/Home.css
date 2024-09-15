@@ -102,3 +102,15 @@ body, html {
     border-radius: 50%;
     margin: 0 5px;
 }
+.logi{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+.logi img{ 
+    border: 50%;
+    width: 30px;
+    height: 30px;
+}

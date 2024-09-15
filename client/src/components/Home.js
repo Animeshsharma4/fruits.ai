@@ -15,7 +15,8 @@ const Home = () => {
         <Link to="/faq" className="grid-button faq">FAQs</Link>
         <Link to="/about" className="grid-button about">About</Link>
       </div>
-      
+      <Link to="/login" className="logi"><img src="https://th.bing.com/th/id/OIP.kTP1-PtFKxTZ3t4jfln6WwHaI0?rs=1&pid=ImgDetMain" alt ="go to home page"></img></Link>
+
     </div>
   );
 };
