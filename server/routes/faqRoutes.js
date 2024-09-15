@@ -7,8 +7,8 @@ const Faq = require('../models/Faq');
 // @access  Public
 router.get('/', async (req, res) => {
   try {
-    const faqs = await Faq.find();
-    // console.log(faqs);
+    const faqs = await Faq.find().limit(5);
+    console.log(faqs);
     res.json(faqs);
 
   } catch (err) {
