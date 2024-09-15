@@ -14,13 +14,13 @@ router.get('/', async (req, res) => {
       // Find user in the database
       const user = await User.findOne({ email: userId });
       if (!user) {
-        return res.status(400).json({ success: false, message: 'User not found' });
+        return res.status(200).json({ success: false, message: 'User not found' });
       }
   
       // Compare password
       // const isMatch = password;
       if (!(user.password==password)) {
-        return res.status(400).json({ success: false, message: 'Invalid password' });
+        return res.status(200).json({ success: false, message: 'Invalid password' });
       }
   
       // If credentials are valid, send success response
