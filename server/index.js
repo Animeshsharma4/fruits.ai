@@ -10,7 +10,8 @@ app.use(express.json());
 
 mongoose.connect('mongodb+srv://animeshsharma42002:Animesh04@fruits-db.yl6w5.mongodb.net/test?retryWrites=true&w=majority&appName=fruits-db', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 50000, // Increase timeout to 50 seconds
 }).then(() => console.log('MongoDB connected'))
   .catch((err) => console.error(err));
 app.get("/",(req,res)=>{
