@@ -18,7 +18,7 @@
 //     useEffect(() => {
 //         const fetchFAQs = async () => {
 //             try {
-//                 const response = await axios.get('http://localhost:5000/api/faqs');
+//                 const response = await axios.get('fruits-ai-backend.vercel.app/api/faqs');
 //                 setFaqs(response.data); // Ensure the response shape is an array
 //             } catch (err) {
 //                 setError(err.message);
@@ -46,7 +46,7 @@
 //         const newFaq = { question: newQuestion, answer: newAnswer };
 
 //         try {
-//             const response = await axios.post('http://localhost:5000/api/faqs', newFaq);
+//             const response = await axios.post('fruits-ai-backend.vercel.app/api/faqs', newFaq);
 //             setFaqs([...faqs, response.data]);
 //             setNewQuestion('');
 //             setNewAnswer('');
@@ -59,7 +59,7 @@
 //         const faqToDelete = faqs[index];
 
 //         try {
-//             const response = await axios.delete(`http://localhost:5000/api/faqs/${faqToDelete._id}`);
+//             const response = await axios.delete(`fruits-ai-backend.vercel.app/api/faqs/${faqToDelete._id}`);
 //             setFaqs(response.data);
 //         } catch (err) {
 //             setError("delete operation not working");
@@ -82,7 +82,7 @@
 //         const updatedFaq = { question: editQuestion, answer: editAnswer };
 
 //         try {
-//             const response = await axios.put(`http://localhost:5000/api/faqs/${faqs[editIndex]._id}`, updatedFaq);
+//             const response = await axios.put(`fruits-ai-backend.vercel.app/api/faqs/${faqs[editIndex]._id}`, updatedFaq);
 //             const updatedData = response.data;
 
 //             const updatedFaqs = faqs.map((faq, i) =>
@@ -172,7 +172,7 @@ const FAQ = () => {
     useEffect(() => {
         const fetchFAQs = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/faqs');
+                const response = await axios.get('fruits-ai-backend.vercel.app/api/faqs');
                 // Ensure each FAQ has an isOpen property
                 const faqsWithOpenState = response.data.map(faq => ({ ...faq, isOpen: false }));
                 setFaqs(faqsWithOpenState);
@@ -202,7 +202,7 @@ const FAQ = () => {
         const newFaq = { question: newQuestion, answer: newAnswer };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/faqs', newFaq);
+            const response = await axios.post('fruits-ai-backend.vercel.app/api/faqs', newFaq);
             setFaqs([...faqs, { ...response.data, isOpen: false }]); // Add isOpen property
             setNewQuestion('');
             setNewAnswer('');
@@ -215,7 +215,7 @@ const FAQ = () => {
         const faqToDelete = faqs[index];
 
         try {
-            await axios.delete(`http://localhost:5000/api/faqs/${faqToDelete._id}`);
+            await axios.delete(`fruits-ai-backend.vercel.app/api/faqs/${faqToDelete._id}`);
             setFaqs(faqs.filter((_, i) => i !== index)); // Remove the deleted FAQ
         } catch (err) {
             setError("Delete operation not working");
@@ -238,7 +238,7 @@ const FAQ = () => {
         const updatedFaq = { question: editQuestion, answer: editAnswer };
 
         try {
-            const response = await axios.put(`http://localhost:5000/api/faqs/${faqs[editIndex]._id}`, updatedFaq);
+            const response = await axios.put(`fruits-ai-backend.vercel.app/api/faqs/${faqs[editIndex]._id}`, updatedFaq);
             const updatedData = { ...response.data, isOpen: false }; // Reset isOpen
 
             const updatedFaqs = faqs.map((faq, i) =>

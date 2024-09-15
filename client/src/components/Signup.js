@@ -26,7 +26,7 @@ const Signup = () => {
     // Clear error message
     setError('');
     try {
-      const response = await axios.post('http://localhost:5000/api/login/register', {
+      const response = await axios.post('fruits-ai-backend.vercel.app/api/login/register', {
         email,
         password,
       });
