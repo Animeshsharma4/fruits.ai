@@ -174,6 +174,7 @@ const FAQ = () => {
             try {
                 const response = await axios.get('fruits-ai-backend.vercel.app/api/faqs');
                 // Ensure each FAQ has an isOpen property
+                console.log(response);
                 const faqsWithOpenState = response.data.map(faq => ({ ...faq, isOpen: false }));
                 setFaqs(faqsWithOpenState);
             } catch (err) {
