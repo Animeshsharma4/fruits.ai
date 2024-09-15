@@ -168,6 +168,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
+      
       const response = await axios.post('https://fruits-ai-backend.vercel.app/api/login', {
         userId,
         password,
@@ -180,7 +181,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Error during login:', error);
-      alert('An error occurred. Please try again.');
+      alert('Please Enter username and password');
     }
   };
 
