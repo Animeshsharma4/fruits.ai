@@ -182,7 +182,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Error during login:', error);
-      alert('Please Enter username and password');
+      alert('neteork issue please try again');
     }
   };
 
