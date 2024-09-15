@@ -13,7 +13,9 @@ mongoose.connect('mongodb://localhost/fruitai', {
   useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected'))
   .catch((err) => console.error(err));
-
+app.get("/",(req,res)=>{
+  res.send("hello")
+})
 
   app.use('/api/login', loginRoutes);
 app.use('/api/faqs', faqRoutes);
