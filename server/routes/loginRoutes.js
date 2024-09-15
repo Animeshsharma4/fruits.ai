@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/login.js');
-
+// const bcrypt = require('bcrypt');
 
 
 
@@ -18,8 +18,9 @@ router.get('/', async (req, res) => {
       }
   
       // Compare password
-      const isMatch = password;
-      if (!isMatch) {
+      // const isMatch = await bcrypt.compare(password, user.password);
+
+      if (!(password===user.password)) {
         return res.status(200).json({ success: false, message: 'Invalid password' });
       }
   
