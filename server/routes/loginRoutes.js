@@ -7,9 +7,9 @@ const User = require('../models/login.js');
 
 
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
     const { userId, password } = req.body;
-    console.log(userId);
+    
   
     try {
       // Find user in the database
