@@ -1,32 +1,9 @@
-// import React, { useEffect, useState } from 'react';
 
-// const Faq = () => {
-//   const [faqs, setFaqs] = useState([]);
 
-//   useEffect(() => {
-//     fetch('/api/faqs')
-//       .then((res) => res.json())
-//       .then((data) => setFaqs(data));
-//   }, []);
-
-//   return (
-//     <div>
-//       <h2>FAQ</h2>
-//       <ul>
-//         {faqs.map((faq) => (
-//           <li key={faq._id}>
-//             <h3>{faq.question}</h3>
-//             <p>{faq.answer}</p>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default Faq;
+// export default FAQ;
 // import React, { useState, useEffect } from 'react';
-// import './Faq.css'; // Optional: Include CSS for styling
+// import axios from 'axios'; // Import Axios
+// // import './Faq.css'; // Optional: Include CSS for styling
 
 // const FAQ = () => {
 //     const [faqs, setFaqs] = useState([]);
@@ -41,14 +18,8 @@
 //     useEffect(() => {
 //         const fetchFAQs = async () => {
 //             try {
-//                 const response = await fetch('http://localhost:5000/api/faqs');
-//                 if (!response.ok) {
-//                     throw new Error('Failed to fetch FAQs');
-//                 }
-                
-//                 const data = await response.json();
-//                 console.log(data);
-//                 setFaqs(data); // Ensure the response shape is an array
+//                 const response = await axios.get('http://localhost:5000/api/faqs');
+//                 setFaqs(response.data); // Ensure the response shape is an array
 //             } catch (err) {
 //                 setError(err.message);
 //             } finally {
@@ -75,15 +46,8 @@
 //         const newFaq = { question: newQuestion, answer: newAnswer };
 
 //         try {
-//             const response = await fetch('http://localhost:5000/api/faqs', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 },
-//                 body: JSON.stringify(newFaq),
-//             });
-//             const addedFaq = await response.json();
-//             setFaqs([...faqs, addedFaq]);
+//             const response = await axios.post('http://localhost:5000/api/faqs', newFaq);
+//             setFaqs([...faqs, response.data]);
 //             setNewQuestion('');
 //             setNewAnswer('');
 //         } catch (err) {
@@ -95,12 +59,10 @@
 //         const faqToDelete = faqs[index];
 
 //         try {
-//             await fetch(`http://localhost:5000/api/faqs/${faqToDelete._id}`, {
-//                 method: 'DELETE',
-//             });
-//             setFaqs(faqs.filter((_, i) => i !== index));
+//             const response = await axios.delete(`http://localhost:5000/api/faqs/${faqToDelete._id}`);
+//             setFaqs(response.data);
 //         } catch (err) {
-//             setError(err.message);
+//             setError("delete operation not working");
 //         }
 //     };
 
@@ -120,14 +82,8 @@
 //         const updatedFaq = { question: editQuestion, answer: editAnswer };
 
 //         try {
-//             const response = await fetch(`http://localhost:5000/api/faqs/${faqs[editIndex]._id}`, {
-//                 method: 'PUT',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 },
-//                 body: JSON.stringify(updatedFaq),
-//             });
-//             const updatedData = await response.json();
+//             const response = await axios.put(`http://localhost:5000/api/faqs/${faqs[editIndex]._id}`, updatedFaq);
+//             const updatedData = response.data;
 
 //             const updatedFaqs = faqs.map((faq, i) =>
 //                 i === editIndex ? updatedData : faq
@@ -198,6 +154,7 @@
 // };
 
 // export default FAQ;
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Import Axios
 import './Faq.css'; // Optional: Include CSS for styling
@@ -216,7 +173,9 @@ const FAQ = () => {
         const fetchFAQs = async () => {
             try {
                 const response = await axios.get('http://localhost:5000/api/faqs');
-                setFaqs(response.data); // Ensure the response shape is an array
+                // Ensure each FAQ has an isOpen property
+                const faqsWithOpenState = response.data.map(faq => ({ ...faq, isOpen: false }));
+                setFaqs(faqsWithOpenState);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -244,7 +203,7 @@ const FAQ = () => {
 
         try {
             const response = await axios.post('http://localhost:5000/api/faqs', newFaq);
-            setFaqs([...faqs, response.data]);
+            setFaqs([...faqs, { ...response.data, isOpen: false }]); // Add isOpen property
             setNewQuestion('');
             setNewAnswer('');
         } catch (err) {
@@ -256,10 +215,10 @@ const FAQ = () => {
         const faqToDelete = faqs[index];
 
         try {
-            const response = await axios.delete(`http://localhost:5000/api/faqs/${faqToDelete._id}`);
-            setFaqs(response.data);
+            await axios.delete(`http://localhost:5000/api/faqs/${faqToDelete._id}`);
+            setFaqs(faqs.filter((_, i) => i !== index)); // Remove the deleted FAQ
         } catch (err) {
-            setError("delete operation not working");
+            setError("Delete operation not working");
         }
     };
 
@@ -280,7 +239,7 @@ const FAQ = () => {
 
         try {
             const response = await axios.put(`http://localhost:5000/api/faqs/${faqs[editIndex]._id}`, updatedFaq);
-            const updatedData = response.data;
+            const updatedData = { ...response.data, isOpen: false }; // Reset isOpen
 
             const updatedFaqs = faqs.map((faq, i) =>
                 i === editIndex ? updatedData : faq
@@ -301,13 +260,14 @@ const FAQ = () => {
         <div className="faq-container">
             <h2>Frequently Asked Questions</h2>
             {faqs.map((faq, index) => (
-                <div key={index} className="faq-item">
+                <div key={faq._id} className="faq-item"> {/* Use _id as the key */}
                     <div className="faq-question" onClick={() => toggleAnswer(index)}>
                         <strong>{faq.question}</strong>
                     </div>
                     {faq.isOpen && <div className="faq-answer">{faq.answer}</div>}
-                    <button onClick={() => handleEdit(index)}>Edit</button>
-                    <button onClick={() => handleDelete(index)}>Delete</button>
+                    <div className='editdel'>
+                    <button onClick={() => handleEdit(index) }>Edit</button>
+                    <button onClick={() => handleDelete(index)}>Delete</button></div>
                 </div>
             ))}
 
@@ -320,30 +280,33 @@ const FAQ = () => {
                     onChange={(e) => setNewQuestion(e.target.value)}
                 />
                 <input
+                id="getinput"
                     type="text"
                     placeholder="Answer"
                     value={newAnswer}
                     onChange={(e) => setNewAnswer(e.target.value)}
                 />
-                <button onClick={handleAdd}>Add FAQ</button>
+                <button onClick={handleAdd} className='add1'>Add FAQ</button>
             </div>
 
             {editIndex !== null && (
                 <div className="edit-faq">
                     <h3>Edit FAQ</h3>
                     <input
+                    
                         type="text"
                         placeholder="Edit Question"
                         value={editQuestion}
                         onChange={(e) => setEditQuestion(e.target.value)}
                     />
                     <input
+                    id="getinput1"
                         type="text"
                         placeholder="Edit Answer"
                         value={editAnswer}
                         onChange={(e) => setEditAnswer(e.target.value)}
                     />
-                    <button onClick={handleUpdate}>Update FAQ</button>
+                    <button onClick={handleUpdate} className='add2'>Update FAQ</button>
                 </div>
             )}
         </div>

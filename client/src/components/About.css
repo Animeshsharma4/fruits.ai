@@ -1,7 +1,12 @@
+body{
+    background: linear-gradient(135deg, #a8e6ff, #f2e9ff);
+}
+
+
 .about-container {
     max-width: 800px;
     margin: auto;
-    padding: 20px;
+    padding: 30px;
     /* background-color: #f4f4f4; */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -54,9 +59,9 @@ p {
 
 .mission-vision {
     background-color: #e9ecef;
-    padding: 20px;
+    padding: 8px;
     border-radius: 8px;
-    margin-top: 30px;
+    margin-top: 10px;
     text-align: center;
 }
 

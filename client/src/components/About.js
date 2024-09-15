@@ -6,8 +6,14 @@ const About = () => {
         <div className="about-container">
             <h1>About Us</h1>
             <p>
-                Welcome to our application! We are dedicated to providing the best service possible.
-                Our team is passionate about delivering high-quality solutions that meet your needs.
+            Fruit.ai represents a
+significant advancement in health
+management solutions. By combining
+technology with user-centric design, it
+offers a comprehensive tool for improving
+health outcomes. The future of health
+management is here.
+
             </p>
             <div className="team-section">
                 <h2>Meet Our Team</h2>
@@ -30,7 +36,12 @@ const About = () => {
             <div className="mission-vision">
                 <h2>Our Mission & Vision</h2>
                 <p>
-                    Our mission is to innovate and provide the best solutions for our customers.
+                    
+                    {/* Fruit.ai is an innovative health management solution designed to enhance overall
+wellness. This presentation explores its design and development, highlighting key
+features and benefits that cater to diverse health needs. Join us as we delve into
+the transformative potential of health management. */}
+Our mission is to innovate and provide the best solutions for our customers.
                     We envision a world where technology seamlessly integrates with daily life.
                 </p>
             </div>

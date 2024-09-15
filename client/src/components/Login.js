@@ -87,13 +87,13 @@ const Login = () => {
 
   return (
     <div className="container">
-      <h2>Login</h2>
+      <h2 id="title">Login</h2>
       <p>
         By signing in you are agreeing to our{' '}
         <a href="/terms">Terms and Privacy Policy</a>
       </p>
 
-      <div className="input-group">
+      <div className="input-group" id="emailv">
         <input
           type="email"
           placeholder="Email Address"
@@ -118,7 +118,7 @@ const Login = () => {
       </div>
 
       <p className="forgot-password">
-        <a href="/forgot-password">Forgot password</a>
+        <a href="/Signup">Forgot password</a>
       </p>
 
       <button onClick={handleLogin}>Login</button>

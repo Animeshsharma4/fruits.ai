@@ -4,7 +4,7 @@
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #ffffff;
+    background: linear-gradient(135deg, #a8e6ff, #f2e9ff);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
@@ -12,6 +12,7 @@
   .signup-container h2 {
     text-align: center;
     margin-bottom: 20px;
+    color: #333;
   }
   
   .input-group {
@@ -66,4 +67,7 @@
   .login-option a:hover {
     text-decoration: underline;
   }
+  input::placeholder {
+    color: #999; /* Replace with the color used for other placeholders */
+}
   

@@ -55,7 +55,7 @@ const Signup = () => {
         />
       </div>
 
-      <div className="input-group">
+      <div className="input-group" >
         <input
           type="password"
           placeholder="Password"

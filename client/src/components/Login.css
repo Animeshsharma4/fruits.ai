@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background: linear-gradient(135deg, #a8e6ff, #f2e9ff);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    background-color: white;
+    background: linear-gradient(135deg, #a8e6ff, #f2e9ff);
     width: 350px;
     padding: 20px;
     border-radius: 10px;
@@ -166,4 +166,10 @@ button:hover {
 
 .anonymous-login button:hover {
     background-color: #e6b800;
+}
+#emailv{
+    margin-top: 10px;
+}
+#title{
+    color: #333;
 }
