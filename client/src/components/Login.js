@@ -177,6 +177,7 @@ const Login = () => {
       if (response.data.success) {
         navigate('/home');
       } else {
+        console.log(response.data.message);
         alert('Invalid credentials');
       }
     } catch (error) {
