@@ -182,7 +182,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Error during login:', error);
-      alert('neteork issue please try again');
+      alert('network issue please try again');
     }
   };
 
